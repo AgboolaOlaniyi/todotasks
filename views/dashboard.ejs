@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <link rel="manifest" href="../public/site.webmanifest" />
+    <link rel="stylesheet" href="../public/style.css" />
+    <title>| dashboard</title>
+  </head>
+  <body style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+   
+            
+            <%-include("partials/header1.ejs")-%>
+          </div>
+          <span  style="float: right; color: #2bff00;"  id="date"><%=date%></span>
+          <hr />
+          <%if(user){%>
+          <h1 class="wel">
+            You are Welcome <span class="use"><%= user.username%></span> 
+            
+          </h1>
+          <h3 class="wel">
+         
+          </h3>
+        </header>
+        <div id="taskTable">
+          <main>
+            <table class="center">
+              <tr style="color: white; font-family: 'Lucida Sans'; font-weight: 300;" >
+                <th>WHAT TO DO</th>
+                
+                <th>&nbsp STATE </th>
+                <th> </th>
+              </tr>
+              <%taskInfos.forEach(taskInfo=>{%> <%if(taskInfo.state ==
+              "pending"){%>
+              <tr>
+                <td style="border-style:double; border-radius:10px 10px; color: red; font-weight: 100; background-color: wheat;"><%=taskInfo.task_name%></td>
+
+                <td style="border-style:double; border-radius:10px 10px; background-color: green; color: white;">
+                  <form action="/tasks/update/<%=taskInfo._id%>" method="PUT">
+                    <input
+                      id="stateInput" 
+                      type="text"
+                      name="state"
+                      value="completed"
+                    
+
+                    />
+                    <button
+                      id="state"
+                      type="submit"
+                      formmethod="post"
+                      title="click to mark your task completed"
+                      style="background-color: brown; color: white;"
+                      border-radius="80px"
+                    >
+                      <%=taskInfo.state%>
+                    </button>
+                  </form>
+                </td>
+
+                <td style="border-style:double; border-radius:10px 10px; background-color: green; color: white;">
+                  <form action="/tasks/<%=taskInfo._id%>" method="DELETE">
+                    <button
+                      id="delButon"
+                      type="submit"
+                      formmethod="post"
+                      title="delete task"
+                      style="background-color: red; color: white;",
+                    >
+                      <img
+                        src="../public/delete_icon.svg"
+                        alt="delete"
+                        id="delIcon"
+                        width="25"
+                        height="25"
+                      />
+                      <figcaption>delete</figcaption>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <%}else{%>
+              <tr>
+                <td style="border-style:double; border-radius:10px 10px; background-color: green; color: white;"><%=taskInfo.task_name%></td>
+
+                <td style="border-style:double; border-radius:10px 10px; background-color: green; color: white;">
+                  <form action="/tasks/update/<%=taskInfo._id%>" method="PUT">
+                    <input
+                      id="stateInput"
+                      type="text"
+                      name="state"
+                      value="pending"
+                      style="background-color: brown; color: white;"
+                    />
+                    <button
+                      id="state"
+                      type="submit"
+                      formmethod="post"
+                      title="click to mark your task pending"
+                       style="background-color: green; color: white;"
+                    >
+                      <%=taskInfo.state%>
+                    </button>
+                  </form>
+                </td>
+
+                <td style="border-style:double; border-radius:10px 10px; background-color: green; color: white;">
+                  <form action="/tasks/<%=taskInfo._id%>" method="DELETE">
+                    <button
+                      id="delButon"
+                      type="submit"
+                      formmethod="post"
+                      title="delete task"
+                      style="background-color: red; color: white;",
+                    >
+                      <img
+                        src="../public/delete_icon.svg"
+                        alt="delete"
+                        id="delIcon"
+                        width="25"
+                        height="25"
+                      />
+                      <figcaption>delete</figcaption>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <%}%> <%})%>
+            </table>
+            <p style="color: rgb(46, 23, 182); font-family: monospace; font-size:large; text-align: center; margin-top: 50px; font-weight: 200;">   <b>Note:</b>When a task is completed, click the <span style="color: crimson;">"pending"</span> button to
+              mark it <span style="color: green;">completed</span> or otherwise.</p>
+            <% }else{%>
+            <p>>please <a href="/login">login</a></p>
+            <%}%>
+          </main>
+        </div>
+      </div>
+       </div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+                background-image: url("/views/Desert.jpg");
+                background-repeat: repeat;
+                background-size: cover;
+            }
+            h1, h2{
+                color:whitesmoke;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+              
+            }
+            .animate{
+                color: green;
+            }
+            .animate{
+                animation-name: slidein;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+                      
+                    }
+                    @keyframes slidein {
+                    from{
+                        margin-right: 100;
+                        width: 300%;
+                }
+                to{
+                    margin-right: 0%;
+                    width: 100%;
+                                    }
+           }
+           .log {
+                    text-align: center;
+                    margin-top: 30px;
+                    font-size: 30px;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+         .b{
+            color: green;
+         }    
+
+            
+
+           
+           .al{
+            color: red;
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 60px;
+           }
+           body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+        </style>
+</head>
+<header>  <%- include("partials/header4.ejs") %></header>
+<body>
+
+    <h1 class="animate"> WELCOME TO TODO TASK MANAGEMENT APP </h1> 
+
+      <h2 class="animate">SCHEDULE YOUR TASK TODAY</p></h2>
+    
+        <!--forms in Html-->
+        <nav class="log">
+       <h3 class="al">TODO TASK APP</h3>
+        <a href="/Login" class="b">Login</a>
+        <a href="/Signup" class="b"> Signup</a></p>
+             
+    </nav>
+       
+        
+    <footer> <%- include("partials/footer.ejs") %></footer>    
+</body>
+</html>
